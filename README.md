@@ -1,13 +1,3 @@
-# Repository Metadata & Settings (Recommended)
-
-To optimize your repository on GitHub, configure the settings as follows:
-* **Repository Name**: `news-platform`
-* **Display Title**: `NewsWave | Premium Glassmorphic News Reader`
-* **Short Description**: `A high-end, responsive vanilla web application featuring a glassmorphic user interface, light/dark theme toggle, debounced keyword search, and an iOS-inspired slide-in article reader with native back-button hash routing. Powered by NewsAPI.`
-* **Topics/Tags**: `javascript`, `news-api`, `glassmorphism`, `responsive-design`, `css-grid`, `ios-transitions`, `single-page-app`, `localstorage`, `dark-mode`, `frontend`, `ojt-project`
-
----
-
 # 🌊 NewsWave — Premium Glassmorphic News Reader
 
 NewsWave is a premium, ultra-responsive web application designed to browse global breaking headlines across multiple categories. Handcrafted with semantic HTML5, modern vanilla CSS3, and modular ES6 JavaScript, this client integrates directly with NewsAPI and features an iOS-inspired sliding reader view, intelligent mock-data fallbacks, and local storage caching.
