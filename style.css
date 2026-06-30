@@ -1021,3 +1021,254 @@ footer {
     padding: 0.5rem 1rem;
   }
 }
+
+/* App View Viewport & Animation wrapper */
+#app-view {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body.reader-active {
+  overflow: hidden; /* Lock scroll on background feed when reading */
+}
+
+body.reader-active #app-view {
+  transform: translate3d(-8%, 0, 0) scale(0.96);
+  filter: brightness(0.7);
+  pointer-events: none;
+}
+
+/* Fullscreen Reader Overlay */
+#reader-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  transform: translate3d(100%, 0, 0);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--bg-surface-solid);
+  overflow: hidden;
+}
+
+body.reader-active #reader-view {
+  transform: translate3d(0, 0, 0);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] #reader-view {
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
+}
+
+/* iOS Navigation Header */
+.reader-nav {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+  background: var(--bg-surface);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.reader-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--accent-color);
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem 0.5rem 0.5rem;
+  border-radius: 8px;
+  margin-left: -0.5rem;
+  transition: background var(--transition-fast);
+}
+
+.reader-back-btn:hover {
+  background: var(--accent-light);
+}
+
+.reader-back-btn span {
+  font-size: 1rem;
+}
+
+.reader-nav-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.reader-nav-spacer {
+  width: 60px; /* Balance the back button on the right */
+}
+
+/* Scroll Container */
+.reader-scroll-container {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Reader Hero Image */
+.reader-hero-wrapper {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  min-height: 250px;
+  max-height: 450px;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.reader-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reader-hero-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg-surface-solid) 0%, var(--bg-primary) 100%);
+  color: var(--text-muted);
+  gap: 0.5rem;
+}
+
+/* Content Body */
+.reader-content-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem 1.5rem;
+}
+
+.reader-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.reader-source-badge {
+  background: var(--accent-light);
+  color: var(--accent-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--pill-radius);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.reader-title {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.reader-author-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.reader-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin-bottom: 2rem;
+}
+
+/* Typography for Reader Mode (iOS style editorial layout) */
+.reader-text-content {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.reader-text-content p {
+  margin-bottom: 1.75rem;
+}
+
+.reader-text-content blockquote {
+  border-left: 4px solid var(--accent-color);
+  padding-left: 1.25rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+}
+
+/* iOS Primary Action Button */
+.reader-action-container {
+  margin-top: 3.5rem;
+  text-align: center;
+}
+
+.reader-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 320px;
+  padding: 1rem 1.5rem;
+  background: var(--accent-gradient);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  transition: all var(--transition-fast);
+}
+
+.reader-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.45);
+}
+
+.reader-action-btn:active {
+  transform: translateY(0);
+}
+
+/* Adjustments for iPad & Larger Screens */
+@media (min-width: 768px) {
+  .reader-content-body {
+    padding: 3.5rem 2rem 6rem 2rem;
+  }
+  
+  .reader-title {
+    font-size: 2.75rem;
+  }
+  
+  .reader-text-content {
+    font-size: 1.2rem;
+  }
+}

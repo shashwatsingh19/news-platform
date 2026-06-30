@@ -24,132 +24,141 @@
     <div class="blob blob-2"></div>
   </div>
 
-  <!-- Header Navigation -->
-  <header class="glass">
-    <div class="nav-container">
-      <div class="logo-wrapper">
-        <div class="logo-icon">
-          <i data-lucide="newspaper"></i>
-        </div>
-        <span class="logo-text">NewsWave</span>
-      </div>
-      
-      <div class="header-actions">
-
-        <!-- Toggle Dark/Light Mode -->
-        <button id="theme-toggle-btn" class="icon-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
-          <i data-lucide="moon" id="theme-icon"></i>
-        </button>
-        
-        <!-- API Settings Modal button -->
-        <button id="settings-toggle-btn" class="icon-btn" aria-label="NewsAPI settings" title="NewsAPI Settings">
-          <i data-lucide="settings"></i>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Feed Area -->
-  <main>
-    <!-- Welcome banner / Search -->
-    <section class="search-section">
-      <h1>Discover What's Happening</h1>
-      <p>Stay informed with updates from around the globe across science, tech, and sports.</p>
-      
-      <div class="search-bar-wrapper">
-        <input type="text" id="search-input" class="search-bar glass" placeholder="Search keywords (e.g. quantum, solar, startup)..." autocomplete="off" aria-label="Search articles">
-        <div class="search-icon">
-          <i data-lucide="search"></i>
-        </div>
-        <button id="search-clear-btn" class="clear-btn" aria-label="Clear search">
-          <i data-lucide="x"></i>
-        </button>
-      </div>
-    </section>
-
-    <!-- Categories Filters -->
-    <nav class="categories-container" aria-label="News categories">
-      <div class="categories-wrapper" id="categories-wrapper">
-        <!-- Dynamically injected category pills -->
-      </div>
-    </nav>
-
-    <!-- News Grid Header -->
-    <div class="section-header">
-      <h2 class="section-title" id="section-title">Latest Headlines</h2>
-      <div class="results-count" id="results-count">Showing 0 articles</div>
-    </div>
-
-    <!-- News Articles Container -->
-    <section id="news-grid-container" class="news-grid">
-      <!-- Skeleton loaders and cards will be dynamically injected here -->
-    </section>
-
-    <!-- Pagination Controls -->
-    <nav class="pagination" id="pagination-controls" aria-label="Pagination Navigation" style="display: none;">
-      <button class="pagination-btn" id="prev-page-btn" aria-label="Previous Page">
-        <i data-lucide="chevron-left"></i>
-      </button>
-      <span class="page-num" id="current-page-num">Page 1</span>
-      <button class="pagination-btn" id="next-page-btn" aria-label="Next Page">
-        <i data-lucide="chevron-right"></i>
-      </button>
-    </nav>
-  </main>
-
-  <!-- Settings / API Config Modal -->
-  <div class="modal-overlay" id="settings-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal-content glass">
-      <div class="modal-header">
-        <h3 class="modal-title" id="modal-title">NewsAPI Settings</h3>
-        <button class="modal-close" id="modal-close-btn" aria-label="Close modal">
-          <i data-lucide="x"></i>
-        </button>
-      </div>
-      
-      <div class="modal-body">
-        <div class="form-group">
-          <label class="form-label" for="api-key-input">NewsAPI Secret Key</label>
-          <div class="form-input-wrapper">
-            <input type="password" id="api-key-input" class="form-input" placeholder="Paste your API key here..." autocomplete="new-password">
-            <button id="toggle-key-visibility" class="input-icon-btn" aria-label="Toggle password visibility">
-              <i data-lucide="eye" id="eye-icon"></i>
-            </button>
+  <div id="app-view">
+    <!-- Header Navigation -->
+    <header class="glass">
+      <div class="nav-container">
+        <div class="logo-wrapper">
+          <div class="logo-icon">
+            <i data-lucide="newspaper"></i>
           </div>
-          <span class="form-help">
-            To make live HTTP requests, register for a free account at <a href="https://newsapi.org/register" target="_blank" rel="noopener noreferrer">newsapi.org</a>, verify your email, and copy the API key from your dashboard.
-          </span>
+          <span class="logo-text">NewsWave</span>
         </div>
+        
+        <div class="header-actions">
+          <!-- Toggle Dark/Light Mode -->
+          <button id="theme-toggle-btn" class="icon-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+            <i data-lucide="moon" id="theme-icon"></i>
+          </button>
+        </div>
+      </div>
+    </header>
 
-        <div class="form-group">
-          <label class="form-label">Active Connection Mode</label>
-          <span class="form-help" id="mode-explanation">
-            <strong>Demo Mode:</strong> Powered by curated mock news data. Perfect for offline review, portfolio showcase, and avoiding API rate limits.
-          </span>
+    <!-- Main Feed Area -->
+    <main>
+      <!-- Welcome banner / Search -->
+      <section class="search-section">
+        <h1>Discover What's Happening</h1>
+        <p>Stay informed with updates from around the globe across science, tech, and sports.</p>
+        
+        <div class="search-bar-wrapper">
+          <input type="text" id="search-input" class="search-bar glass" placeholder="Search keywords (e.g. quantum, solar, startup)..." autocomplete="off" aria-label="Search articles">
+          <div class="search-icon">
+            <i data-lucide="search"></i>
+          </div>
+          <button id="search-clear-btn" class="clear-btn" aria-label="Clear search">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- Categories Filters -->
+      <nav class="categories-container" aria-label="News categories">
+        <div class="categories-wrapper" id="categories-wrapper">
+          <!-- Dynamically injected category pills -->
+        </div>
+      </nav>
+
+      <!-- News Grid Header -->
+      <div class="section-header">
+        <h2 class="section-title" id="section-title">Latest Headlines</h2>
+        <div class="results-count" id="results-count">Showing 0 articles</div>
+      </div>
+
+      <!-- News Articles Container -->
+      <section id="news-grid-container" class="news-grid">
+        <!-- Skeleton loaders and cards will be dynamically injected here -->
+      </section>
+
+      <!-- Pagination Controls -->
+      <nav class="pagination" id="pagination-controls" aria-label="Pagination Navigation" style="display: none;">
+        <button class="pagination-btn" id="prev-page-btn" aria-label="Previous Page">
+          <i data-lucide="chevron-left"></i>
+        </button>
+        <span class="page-num" id="current-page-num">Page 1</span>
+        <button class="pagination-btn" id="next-page-btn" aria-label="Next Page">
+          <i data-lucide="chevron-right"></i>
+        </button>
+      </nav>
+    </main>
+
+    <!-- Footer Credits -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-credits">
+          &copy; 2026 NewsWave Reader. All rights reserved.
+        </div>
+        <div class="footer-tech">
+          Built with 
+          <span>HTML5</span>
+          <span>CSS3 Grid</span>
+          <span>Vanilla JS</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- iOS-style full-screen reader view -->
+  <div id="reader-view" class="glass">
+    <!-- iOS Navigation Bar -->
+    <div class="reader-nav glass">
+      <button class="reader-back-btn" id="reader-back-btn" aria-label="Back to feed">
+        <i data-lucide="chevron-left"></i>
+        <span>Back</span>
+      </button>
+      <div class="reader-nav-title">Reader Mode</div>
+      <div class="reader-nav-spacer"></div>
+    </div>
+    
+    <!-- Reader Scrollable Content -->
+    <div class="reader-scroll-container">
+      <div class="reader-hero-wrapper">
+        <img id="reader-img" src="" alt="" class="reader-hero-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div id="reader-img-fallback" class="reader-hero-fallback">
+          <i data-lucide="image-off" style="width: 48px; height: 48px;"></i>
+          <span>No image preview available</span>
         </div>
       </div>
       
-      <div class="modal-actions">
-        <button class="btn-secondary" id="modal-clear-btn">Reset to Demo</button>
-        <button class="primary-btn" id="modal-save-btn">Save Key</button>
+      <div class="reader-content-body">
+        <div class="reader-meta-bar">
+          <span id="reader-source" class="reader-source-badge">Source</span>
+          <span id="reader-date" class="reader-date">Time ago</span>
+        </div>
+        
+        <h1 id="reader-title" class="reader-title">Article Title</h1>
+        
+        <div id="reader-author-bar" class="reader-author-bar">
+          <i data-lucide="user" style="width: 14px; height: 14px;"></i>
+          <span id="reader-author">By Anonymous</span>
+        </div>
+        
+        <div class="reader-divider"></div>
+        
+        <!-- Properly formatted reader text content -->
+        <div id="reader-text" class="reader-text-content">
+          <!-- Populated dynamically -->
+        </div>
+        
+        <div class="reader-action-container">
+          <a id="reader-origin-link" href="" target="_blank" rel="noopener noreferrer" class="reader-action-btn">
+            Read Original Publication
+            <i data-lucide="external-link" style="width: 16px; height: 16px;"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-
-  <!-- Footer Credits -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-credits">
-        &copy; 2026 NewsWave Reader. Handcrafted for college OJT evaluation.
-      </div>
-      <div class="footer-tech">
-        Built with 
-        <span>HTML5</span>
-        <span>CSS3 Grid</span>
-        <span>Vanilla JS</span>
-      </div>
-    </div>
-  </footer>
 
   <!-- Lucide Vector Icons Library -->
   <script src="https://unpkg.com/lucide@latest"></script>
