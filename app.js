@@ -425,14 +425,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Reader Back Button
     el.readerBackBtn.addEventListener('click', () => {
       window.location.hash = '';
-    });
-
-    // 3. Debounced Keyword Search
-    const handleSearchInput = utils.debounce((e) => {
-      const val = e.target.value.trim();
+    });    // 3. Debounced Keyword Search
+    const performSearch = utils.debounce((val) => {
       state.query = val;
       state.page = 1;
+      loadNews();
+    }, 500);
 
+    el.searchInput.addEventListener('input', (e) => {
+      const val = e.target.value.trim();
+      
+      // Update UI state synchronously for instant response
       if (val) {
         el.searchClearBtn.classList.add('active');
         el.categoriesWrapper.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
@@ -440,12 +443,10 @@ document.addEventListener('DOMContentLoaded', () => {
         el.searchClearBtn.classList.remove('active');
         renderCategories();
       }
-
-      loadNews();
-    }, 500);
-
-    el.searchInput.addEventListener('input', handleSearchInput);
-
+      
+      // Trigger debounced fetch
+      performSearch(val);
+    });
     // Clear Search Input Click
     el.searchClearBtn.addEventListener('click', () => {
       resetSearchState();
